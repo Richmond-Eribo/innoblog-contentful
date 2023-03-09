@@ -12,6 +12,7 @@ export default function Index({preview, allPosts}) {
   const morePosts = allPosts.slice(1)
   return (
     <>
+      {/* {console.log(heroPost)} */}
       <Layout preview={preview}>
         <Head>
           <title>Nigerian Political News</title>
