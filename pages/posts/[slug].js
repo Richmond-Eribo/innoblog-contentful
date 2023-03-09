@@ -31,10 +31,7 @@ export default function Post({post, morePosts, preview}) {
               <Head>
                 <title>{post.title}</title>
                 <meta name='description' content={post.title} />
-                <meta
-                  property='og:image'
-                  content={`https://${post.coverImage.url}`}
-                />
+                <meta property='og:image' content={post.coverImage.url} />
               </Head>
               <PostHeader
                 title={post.title}
