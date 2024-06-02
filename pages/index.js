@@ -40,7 +40,6 @@ export default function Index({ allPosts }) {
 export async function getStaticProps() {
   const allPosts = (await getAllPostsForHome()) ?? [];
 
-  console.log(allPosts);
   return {
     props: { allPosts },
   };

@@ -10,14 +10,15 @@ import SectionSeparator from "../../components/section-separator";
 import Layout from "../../components/layout";
 import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
 import PostTitle from "../../components/post-title";
-import { CMS_NAME } from "../../lib/constants";
 
-export default function Post({ post, morePosts, preview }) {
+export default function Post({ post, morePosts }) {
   const router = useRouter();
 
   if (!router.isFallback && !post) {
     return <ErrorPage statusCode={404} />;
   }
+
+  const preview = false;
 
   return (
     <Layout preview={preview}>
@@ -52,12 +53,11 @@ export default function Post({ post, morePosts, preview }) {
   );
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const data = await getPostAndMorePosts(params.slug, preview);
+export async function getStaticProps({ params }) {
+  const data = await getPostAndMorePosts(params.slug);
 
   return {
     props: {
-      preview,
       post: data?.post ?? null,
       morePosts: data?.morePosts ?? null,
     },
